@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ article.title }}</h1>
+    <span><a href="{{ path('app_article', {'id': article.id} ) }}" >{{ article.title }}</a> published by {{ article.source }} on {{ article.publishedAt|date('Y-m-d') }}</span>
+    <p>{{ article.content }}</p>
+{% endblock %}

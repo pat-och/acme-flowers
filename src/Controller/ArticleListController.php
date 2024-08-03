@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ArticleListController extends AbstractController
 {
-    #[Route('/article/list', name: 'app_article_list')]
+    #[Route('/articles', name: 'app_article_list')]
     public function index(): Response
     {
         return $this->render('article/list.html.twig', [
