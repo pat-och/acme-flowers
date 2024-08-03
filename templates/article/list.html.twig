@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleListController!{% endblock %}
+
+{% block body %}
+    <h1>Articles</h1>
+
+    <ul>
+        {% for article in articles %}
+            <li>
+                <span>{{ article.title }} published by {{ article.source }} on {{ article.publishedAt|date('Y-m-d') }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
