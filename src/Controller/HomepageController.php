@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -8,11 +8,9 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HomepageController extends AbstractController
 {
-    #[Route('/homepage', name: 'app_homepage')]
+    #[Route('/', name: 'app_homepage')]
     public function index(): Response
     {
-        return $this->render('homepage/index.html.twig', [
-            'controller_name' => 'HomepageController',
-        ]);
+        return $this->render('homepage/index.html.twig');
     }
 }
