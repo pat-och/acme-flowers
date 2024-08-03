@@ -12,4 +12,50 @@
             </li>
         {% endfor %}
     </ul>
+
+
+    <div id="myGrid" class="ag-theme-quartz" style="height: 500px"></div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <script>
+
+
+        const articles = [];
+        {% for article in articles %}
+        articles.push(
+            {
+                title: "<a href=\"{{ path('app_article', {'id': article.id} ) }}\" >{{ article.title }}</a>",
+                source: "{{ article.source }}",
+                publishedAt: "{{ article.publishedAt }}",
+            }
+        )
+        {% endfor %}
+
+        console.log(articles)
+
+        // Grid Options: Contains all of the Data Grid configurations
+        const gridOptions = {
+            // Row Data: The data to be displayed.
+            rowData: articles,
+            // Column Definitions: Defines the columns to be displayed.
+            columnDefs: [
+                {
+                    field: "title",
+                    cellRenderer: () => {
+                        return `<a style="display:block; width:100%;height:100%" href="#">` + params.data.title + `</a>`;
+                    },
+                },
+                { field: "source" },
+                { field: "publishedAt" },
+            ]
+        };
+
+        // Your Javascript code to create the Data Grid
+        const myGridElement = document.querySelector('#myGrid');
+        agGrid.createGrid(myGridElement, gridOptions);
+
+    </script>
 {% endblock %}

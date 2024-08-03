@@ -17,25 +17,25 @@ class ArticleListController extends AbstractController
                     'id' => 'abc',
                     'source' => 'src-1',
                     'title' => 'Article 1',
-                    'publishedAt' => '2024-08-' . rand(26, 31)
+                    'publishedAt' => '2024-08-28',
                 ],
                 [
                     'id' => 'def',
                     'source' => 'src-2',
                     'title' => 'Article 2',
-                    'publishedAt' => '2024-08-' . rand(20, 25)
+                    'publishedAt' => '2024-08-21',
                 ],
                 [
                     'id' => 'ghi',
                     'source' => 'src-2',
                     'title' => 'Article 3',
-                    'publishedAt' => '2024-08-' . rand(10, 19)
+                    'publishedAt' => '2024-08-15',
                 ],
                 [
                     'id' => 'jkl',
                     'source' => 'src-1',
                     'title' => 'Article 4',
-                    'publishedAt' => '2024-08-' . rand(1, 9)
+                    'publishedAt' => '2024-08-02',
                 ]
             ],
         ]);
