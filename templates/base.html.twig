@@ -10,6 +10,13 @@
 
     </head>
     <body>
+    <logo>Acme Flowers</logo>
+
+    <nav>
+        <ul>
+            <li><a href="{{ path('app_article_list') }}">Articles</a></li>
+        </ul>
+    </nav>
         {% block content %}{% endblock %}
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
