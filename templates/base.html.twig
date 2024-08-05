@@ -10,13 +10,16 @@
 
     </head>
     <body>
-    <logo>Acme Flowers</logo>
+    <header>
+        <h1><a href="{{ path('app_homepage') }}">Acme Flowers</a></h1>
 
-    <nav>
-        <ul>
-            <li><a href="{{ path('app_article_list') }}">Articles</a></li>
-        </ul>
-    </nav>
+        <nav>
+            <ul>
+                <li><a href="{{ path('app_homepage') }}">Home</a></li>
+                <li><a href="{{ path('app_article_list') }}">Articles</a></li>
+            </ul>
+        </nav>
+        <header>
         {% block content %}{% endblock %}
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
