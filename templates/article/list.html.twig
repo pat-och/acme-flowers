@@ -4,16 +4,6 @@
 
 {% block content %}
     <h1>Articles</h1>
-
-    <ul>
-        {% for article in articles %}
-            <li>
-                <span><a href="{{ path('app_article', {'id': article.id} ) }}" >{{ article.title }}</a> published by {{ article.source }} on {{ article.publishedAt|date('Y-m-d') }}</span>
-            </li>
-        {% endfor %}
-    </ul>
-
-
     <div id="myGrid" class="ag-theme-quartz" style="height: 500px"></div>
 {% endblock %}
 
@@ -22,19 +12,35 @@
     <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
     <script>
 
+        class TitleRenderer  {
+
+            eGui;
+            init(params) {
+                this.eGui = document.createElement('span');
+                this.eGui.innerHTML = `<a href="/article/${params.data.id}">${params.data.title}</a>`;
+            }
+
+            getGui() {
+                return this.eGui;
+            }
+
+            refresh(params) {
+                return false;
+            }
+        }
+
 
         const articles = [];
         {% for article in articles %}
         articles.push(
             {
-                title: "<a href=\"{{ path('app_article', {'id': article.id} ) }}\" >{{ article.title }}</a>",
+                id: "{{ article.id }}",
+                title: "{{ article.title }}",
                 source: "{{ article.source }}",
                 publishedAt: "{{ article.publishedAt }}",
             }
         )
         {% endfor %}
-
-        console.log(articles)
 
         // Grid Options: Contains all of the Data Grid configurations
         const gridOptions = {
@@ -44,8 +50,10 @@
             columnDefs: [
                 {
                     field: "title",
-                    cellRenderer: () => {
-                        return `<a style="display:block; width:100%;height:100%" href="#">` + params.data.title + `</a>`;
+                    cellRendererSelector: (params) => {
+                        return {
+                            component: TitleRenderer,
+                        };
                     },
                 },
                 { field: "source" },
