@@ -15,12 +15,12 @@ class ArticleListController extends AbstractController
 
         $articles = [];
 
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 57; $i++) {
             $articles[] =                 [
                 'id' => Uuid::v4(),
                 'source' => 'src-' . rand(1 , 2),
                 'title' => 'Article ' . $i,
-                'publishedAt' => '2024-0' . rand(0 , 9)  . '-' . rand(10 , 30),
+                'publishedAt' => '2024-0' . rand(1 , 9)  . '-' . rand(10 , 30),
             ];
         }
 
