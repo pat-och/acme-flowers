@@ -13,14 +13,12 @@ class ArticleListController extends AbstractController
     public function index(): Response
     {
 
-        $articles = $this->getArticleList();
-
         return $this->render('article/list.html.twig', [
-            'articles' => $articles
+            'articles' => $this->getDemoArticleList()
         ]);
     }
 
-    private function getArticleList(): array
+    private function getDemoArticleList(): array
     {
         $articles = [];
 
