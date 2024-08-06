@@ -13,19 +13,25 @@ class ArticleListController extends AbstractController
     public function index(): Response
     {
 
-        $articles = [];
-
-        for ($i = 1; $i <= 57; $i++) {
-            $articles[] =                 [
-                'id' => Uuid::v4(),
-                'source' => 'src-' . rand(1 , 2),
-                'title' => 'Article ' . $i,
-                'publishedAt' => '2024-0' . rand(1 , 9)  . '-' . rand(10 , 30),
-            ];
-        }
+        $articles = $this->getArticleList();
 
         return $this->render('article/list.html.twig', [
             'articles' => $articles
         ]);
+    }
+
+    private function getArticleList(): array
+    {
+        $articles = [];
+
+        for ($i = 1; $i <= 57; $i++) {
+            $articles[] = [
+                'id' => Uuid::v4(),
+                'source' => 'src-' . rand(1, 2),
+                'title' => 'Article ' . $i,
+                'publishedAt' => '2024-0' . rand(1, 9) . '-' . rand(10, 30),
+            ];
+        }
+        return $articles;
     }
 }
